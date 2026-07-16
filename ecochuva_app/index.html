@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>EcoChuva</title>
+    <meta name="description" content="EcoChuva: Calcule quanta água da chuva você pode captar no seu telhado e aprenda a reutilizá-la de forma sustentável para economizar na conta de luz e água.">
+    <meta name="keywords" content="EcoChuva, eco chuva, captação de água da chuva, reutilizar água, sustentabilidade, calcular água da chuva, cisterna">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="rain-drop" style="left: 5%; animation-delay: 0s; animation-duration: 2s;"></div>
+    <div class="rain-drop" style="left: 25%; animation-delay: 1.2s; animation-duration: 2.5s;"></div>
+    <div class="rain-drop" style="left: 55%; animation-delay: 0.6s; animation-duration: 1.8s;"></div>
+    <div class="rain-drop" style="left: 85%; animation-delay: 1.8s; animation-duration: 2.2s;"></div>
+
+    <main id="auth-screen" class="container">
+        <header class="logo-container">
+            <div class="logo-icon">💧</div>
+            <h1>Eco<span>Chuva</span></h1>
+            <p>Planeje seu sistema de reuso de água da chuva e ajude o planeta!</p>
+        </header>
+
+        <section id="login-box" class="auth-box">
+            <h2>Acessar Plataforma</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-username">Usuário:</label>
+                    <input type="text" id="login-username" required placeholder="Digite seu usuário">
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Senha:</label>
+                    <input type="password" id="login-password" required placeholder="Digite sua senha">
+                </div>
+                <button type="submit" class="btn-primary">Entrar</button>
+            </form>
+            <p class="auth-switch">Não tem uma conta? <a href="#" id="go-to-register">Criar conta</a></p>
+        </section>
+
+        <section id="register-box" class="auth-box hidden">
+            <h2>Criar Nova Conta</h2>
+            <form id="register-form">
+                <div class="input-group">
+                    <label for="reg-username">Escolha um Usuário:</label>
+                    <input type="text" id="reg-username" required placeholder="Ex: ecocidadao">
+                </div>
+                <div class="input-group">
+                    <label for="reg-password">Crie uma Senha:</label>
+                    <input type="password" id="reg-password" required placeholder="Mínimo 4 caracteres">
+                </div>
+                <button type="submit" class="btn-primary">Cadastrar</button>
+            </form>
+            <p class="auth-switch">Já tem conta? <a href="#" id="go-to-login">Fazer Login</a></p>
+        </section>
+    </main>
+
+    <main id="main-screen" class="container hidden">
+        <header class="logo-container">
+            <div class="logo-icon">🌱</div>
+            <h1>Eco<span>Chuva</span> - Painel</h1>
+            <p id="welcome-message">Bem-vindo!</p>
+        </header>
+
+        <section class="plan-section">
+            <h3>📋 Plano de Ação: O que fazer com a água captada?</h3>
+            <p>A água da chuva não é potável, mas substitui com perfeição a água tratada da rede pública nessas atividades cotidianas:</p>
+            <div class="help-cards">
+                <div class="card">🧺 <span><strong>Limpeza Geral:</strong> Lavar calçadas, pisos externos e garagens.</span></div>
+                <div class="card">🚽 <span><strong>Descargas:</strong> Abastecer descargas de banheiros.</span></div>
+                <div class="card">🌱 <span><strong>Irrigação:</strong> Regar jardins, hortas de quintal e gramados.</span></div>
+                <div class="card">🚗 <span><strong>Lavagem de Carros:</strong> Limpar carros e motos sem desperdiçar água potável.</span></div>
+            </div>
+        </section>
+
+        <section class="calculator-box">
+            <h2>Simulador de Captação</h2>
+            <form id="calc-form">
+                <h3 class="section-title">1. Dimensões do Telhado</h3>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="house-width">Largura (m):</label>
+                        <input type="number" id="house-width" required min="0.1" step="0.1" placeholder="Ex: 8">
+                    </div>
+                    <div class="input-group">
+                        <label for="house-length">Comprimento (m):</label>
+                        <input type="number" id="house-length" required min="0.1" step="0.1" placeholder="Ex: 12">
+                    </div>
+                </div>
+
+                <h3 class="section-title">2. Dados Pluviométricos (Chuva)</h3>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="rain-intensity">Volume (mm/hora):</label>
+                        <input type="number" id="rain-intensity" required min="0.1" step="0.1" placeholder="Ex: 10">
+                    </div>
+                    <div class="input-group">
+                        <label for="rain-duration">Duração (horas):</label>
+                        <input type="number" id="rain-duration" required min="0.1" step="0.1" placeholder="Ex: 3">
+                    </div>
+                </div>
+
+                <h3 class="section-title">3. Reservatório</h3>
+                <div class="input-group">
+                    <label for="tank-capacity">Capacidade do Tanque:</label>
+                    <div class="input-inline">
+                        <input type="number" id="tank-capacity" required min="1" placeholder="Ex: 1000">
+                        <select id="tank-unit">
+                            <option value="L">Litros (L)</option>
+                            <option value="mL">Mililitros (mL)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Calcular e Ver Simulação</button>
+                <button type="button" id="btn-logout" class="btn-logout">Sair da Conta</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="project-screen" class="container hidden">
+        <header class="logo-container">
+            <div class="logo-icon">💧</div>
+            <h1>Eco<span>Chuva</span> - Resultados</h1>
+        </header>
+
+        <section class="results-box">
+            <h2>Impacto da Captação</h2>
+            
+            <div class="animation-container">
+                <div class="cloud">☁️☁️</div>
+                <div class="rain-splash-zone">
+                    <div class="drop-line" style="left: 15%; animation-delay: 0.1s;"></div>
+                    <div class="drop-line" style="left: 45%; animation-delay: 0.3s;"></div>
+                    <div class="drop-line" style="left: 75%; animation-delay: 0.2s;"></div>
+                </div>
+                <div class="water-tank">
+                    <div class="water-level" id="water-level">
+                        <span id="water-percentage-label">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result-text"></div>
+
+            <div class="rating-box">
+                <p>Avalie nossa ferramenta de captação:</p>
+                <div class="stars" id="star-rating">
+                    <span data-value="1">★</span>
+                    <span data-value="2">★</span>
+                    <span data-value="3">★</span>
+                    <span data-value="4">★</span>
+                    <span data-value="5">★</span>
+                </div>
+                <p id="rating-message" class="hidden-msg">Obrigado pela avaliação! ⭐</p>
+            </div>
+
+            <div class="thanks-eco">
+                🌱 <strong>Sua atitude faz a diferença.</strong> Reutilizar água preserva nossos reservatórios naturais e diminui sua conta de água!
+            </div>
+
+            <footer class="team-footer">
+                <h4>Desenvolvido por:</h4>
+                <ul>
+                    <li>Guilherme (Grilos)</li>
+                    <li>Hitalo (Batatão)</li>
+                    <li>Pedro H. (Japa)</li>
+                    <li>Joanderson (Francosco)</li>
+                    <li>Reinaldo (Binho)</li>
+                </ul>
+            </footer>
+
+            <button id="btn-back" class="btn-secondary">Voltar ao Simulador</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
