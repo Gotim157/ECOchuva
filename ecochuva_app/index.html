@@ -9,15 +9,18 @@
     <meta name="keywords" content="EcoChuva, eco chuva, captação de água da chuva, reutilizar água, sustentabilidade, calcular água da chuva, cisterna">
     <meta name="robots" content="index, follow">
     
+    <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Animação das gotas caindo no fundo -->
     <div class="rain-drop" style="left: 5%; animation-delay: 0s; animation-duration: 2s;"></div>
     <div class="rain-drop" style="left: 25%; animation-delay: 1.2s; animation-duration: 2.5s;"></div>
     <div class="rain-drop" style="left: 55%; animation-delay: 0.6s; animation-duration: 1.8s;"></div>
     <div class="rain-drop" style="left: 85%; animation-delay: 1.8s; animation-duration: 2.2s;"></div>
 
+    <!-- TELA DE AUTENTICAÇÃO -->
     <main id="auth-screen" class="container">
         <header class="logo-container">
             <div class="logo-icon">💧</div>
@@ -25,6 +28,7 @@
             <p>Planeje seu sistema de reuso de água da chuva e ajude o planeta!</p>
         </header>
 
+        <!-- CAIXA DE LOGIN -->
         <section id="login-box" class="auth-box">
             <h2>Acessar Plataforma</h2>
             <form id="login-form">
@@ -34,13 +38,20 @@
                 </div>
                 <div class="input-group">
                     <label for="login-password">Senha:</label>
-                    <input type="password" id="login-password" required placeholder="Digite sua senha">
+                    <div class="password-wrapper">
+                        <input type="password" id="login-password" required placeholder="Digite sua senha">
+                        <button type="button" class="toggle-password" data-target="login-password">👁️</button>
+                    </div>
                 </div>
                 <button type="submit" class="btn-primary">Entrar</button>
             </form>
+            <p class="auth-switch">
+                <a href="#" id="go-to-reset">Esqueceu a senha?</a>
+            </p>
             <p class="auth-switch">Não tem uma conta? <a href="#" id="go-to-register">Criar conta</a></p>
         </section>
 
+        <!-- CAIXA DE CADASTRO -->
         <section id="register-box" class="auth-box hidden">
             <h2>Criar Nova Conta</h2>
             <form id="register-form">
@@ -50,14 +61,38 @@
                 </div>
                 <div class="input-group">
                     <label for="reg-password">Crie uma Senha:</label>
-                    <input type="password" id="reg-password" required placeholder="Mínimo 4 caracteres">
+                    <div class="password-wrapper">
+                        <input type="password" id="reg-password" required placeholder="Mínimo 4 caracteres">
+                        <button type="button" class="toggle-password" data-target="reg-password">👁️</button>
+                    </div>
                 </div>
                 <button type="submit" class="btn-primary">Cadastrar</button>
             </form>
-            <p class="auth-switch">Já tem conta? <a href="#" id="go-to-login">Fazer Login</a></p>
+            <p class="auth-switch">Já tem conta? <a href="#" id="go-to-login-from-reg">Fazer Login</a></p>
+        </section>
+
+        <!-- CAIXA DE RECUPERAÇÃO / MUDANÇA DE SENHA -->
+        <section id="reset-box" class="auth-box hidden">
+            <h2>Alterar Senha</h2>
+            <form id="reset-form">
+                <div class="input-group">
+                    <label for="reset-username">Seu Usuário:</label>
+                    <input type="text" id="reset-username" required placeholder="Digite o nome do seu usuário">
+                </div>
+                <div class="input-group">
+                    <label for="reset-new-password">Nova Senha:</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="reset-new-password" required placeholder="Mínimo 4 caracteres">
+                        <button type="button" class="toggle-password" data-target="reset-new-password">👁️</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Redefinir Senha</button>
+            </form>
+            <p class="auth-switch">Lembrou da senha? <a href="#" id="go-to-login-from-reset">Fazer Login</a></p>
         </section>
     </main>
 
+    <!-- TELA PRINCIPAL (PAINEL DO SIMULADOR) -->
     <main id="main-screen" class="container hidden">
         <header class="logo-container">
             <div class="logo-icon">🌱</div>
@@ -121,6 +156,7 @@
         </section>
     </main>
 
+    <!-- TELA DE RESULTADOS -->
     <div id="project-screen" class="container hidden">
         <header class="logo-container">
             <div class="logo-icon">💧</div>
@@ -146,6 +182,7 @@
 
             <div id="result-text"></div>
 
+            <!-- CAIXA DE AVALIAÇÃO ACUMULATIVA -->
             <div class="rating-box">
                 <p>Avalie nossa ferramenta de captação:</p>
                 <div class="stars" id="star-rating">
@@ -156,6 +193,18 @@
                     <span data-value="5">★</span>
                 </div>
                 <p id="rating-message" class="hidden-msg">Obrigado pela avaliação! ⭐</p>
+                
+                <!-- PAINEL DE ESTATÍSTICAS DE AVALIAÇÃO -->
+                <div class="rating-stats-container">
+                    <div class="rating-stat">
+                        <span class="stat-number" id="avg-rating">0.0</span>
+                        <span class="stat-label">Média Geral ⭐</span>
+                    </div>
+                    <div class="rating-stat">
+                        <span class="stat-number" id="total-ratings">0</span>
+                        <span class="stat-label">Avaliações</span>
+                    </div>
+                </div>
             </div>
 
             <div class="thanks-eco">
@@ -177,6 +226,7 @@
         </section>
     </div>
 
+    <!-- Link para o arquivo JS externo -->
     <script src="script.js"></script>
 </body>
 </html>
